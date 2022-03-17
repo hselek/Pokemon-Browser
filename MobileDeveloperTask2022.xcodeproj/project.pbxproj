@@ -10,9 +10,15 @@
 		11BC042627E2216C00125D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC042527E2216C00125D3A /* AppDelegate.swift */; };
 		11BC042827E2216C00125D3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC042727E2216C00125D3A /* SceneDelegate.swift */; };
 		11BC042A27E2216C00125D3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC042927E2216C00125D3A /* ViewController.swift */; };
-		11BC042D27E2216C00125D3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11BC042B27E2216C00125D3A /* Main.storyboard */; };
 		11BC042F27E2216D00125D3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11BC042E27E2216D00125D3A /* Assets.xcassets */; };
 		11BC043227E2216D00125D3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11BC043027E2216D00125D3A /* LaunchScreen.storyboard */; };
+		11BC043A27E24F6900125D3A /* MDTRestartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC043927E24F6900125D3A /* MDTRestartButton.swift */; };
+		11BC043C27E26A3E00125D3A /* MDTCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC043B27E26A3E00125D3A /* MDTCardView.swift */; };
+		11BC043E27E2714000125D3A /* MDTCardNameLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC043D27E2713F00125D3A /* MDTCardNameLabel.swift */; };
+		11BC044027E2731800125D3A /* MDTCardPokemonImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC043F27E2731800125D3A /* MDTCardPokemonImageView.swift */; };
+		11BC044227E274D600125D3A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC044127E274D600125D3A /* Constants.swift */; };
+		11BC044427E282D700125D3A /* MDTCardPokemonStatsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC044327E282D700125D3A /* MDTCardPokemonStatsLabel.swift */; };
+		11BC044627E2855100125D3A /* MDTCardPokemonStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC044527E2855100125D3A /* MDTCardPokemonStatsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +26,16 @@
 		11BC042527E2216C00125D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11BC042727E2216C00125D3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		11BC042927E2216C00125D3A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		11BC042C27E2216C00125D3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		11BC042E27E2216D00125D3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11BC043127E2216D00125D3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11BC043327E2216D00125D3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11BC043927E24F6900125D3A /* MDTRestartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTRestartButton.swift; sourceTree = "<group>"; };
+		11BC043B27E26A3E00125D3A /* MDTCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTCardView.swift; sourceTree = "<group>"; };
+		11BC043D27E2713F00125D3A /* MDTCardNameLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTCardNameLabel.swift; sourceTree = "<group>"; };
+		11BC043F27E2731800125D3A /* MDTCardPokemonImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTCardPokemonImageView.swift; sourceTree = "<group>"; };
+		11BC044127E274D600125D3A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		11BC044327E282D700125D3A /* MDTCardPokemonStatsLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTCardPokemonStatsLabel.swift; sourceTree = "<group>"; };
+		11BC044527E2855100125D3A /* MDTCardPokemonStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTCardPokemonStatsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +71,13 @@
 				11BC042527E2216C00125D3A /* AppDelegate.swift */,
 				11BC042727E2216C00125D3A /* SceneDelegate.swift */,
 				11BC042927E2216C00125D3A /* ViewController.swift */,
-				11BC042B27E2216C00125D3A /* Main.storyboard */,
+				11BC043927E24F6900125D3A /* MDTRestartButton.swift */,
+				11BC043B27E26A3E00125D3A /* MDTCardView.swift */,
+				11BC043D27E2713F00125D3A /* MDTCardNameLabel.swift */,
+				11BC043F27E2731800125D3A /* MDTCardPokemonImageView.swift */,
+				11BC044327E282D700125D3A /* MDTCardPokemonStatsLabel.swift */,
+				11BC044527E2855100125D3A /* MDTCardPokemonStatsView.swift */,
+				11BC044127E274D600125D3A /* Constants.swift */,
 				11BC042E27E2216D00125D3A /* Assets.xcassets */,
 				11BC043027E2216D00125D3A /* LaunchScreen.storyboard */,
 				11BC043327E2216D00125D3A /* Info.plist */,
@@ -127,7 +145,6 @@
 			files = (
 				11BC043227E2216D00125D3A /* LaunchScreen.storyboard in Resources */,
 				11BC042F27E2216D00125D3A /* Assets.xcassets in Resources */,
-				11BC042D27E2216C00125D3A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,21 +157,20 @@
 			files = (
 				11BC042A27E2216C00125D3A /* ViewController.swift in Sources */,
 				11BC042627E2216C00125D3A /* AppDelegate.swift in Sources */,
+				11BC043C27E26A3E00125D3A /* MDTCardView.swift in Sources */,
 				11BC042827E2216C00125D3A /* SceneDelegate.swift in Sources */,
+				11BC043A27E24F6900125D3A /* MDTRestartButton.swift in Sources */,
+				11BC044027E2731800125D3A /* MDTCardPokemonImageView.swift in Sources */,
+				11BC044627E2855100125D3A /* MDTCardPokemonStatsView.swift in Sources */,
+				11BC043E27E2714000125D3A /* MDTCardNameLabel.swift in Sources */,
+				11BC044227E274D600125D3A /* Constants.swift in Sources */,
+				11BC044427E282D700125D3A /* MDTCardPokemonStatsLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		11BC042B27E2216C00125D3A /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				11BC042C27E2216C00125D3A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		11BC043027E2216D00125D3A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +308,7 @@
 				INFOPLIST_FILE = MobileDeveloperTask2022/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -304,7 +320,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -320,7 +336,7 @@
 				INFOPLIST_FILE = MobileDeveloperTask2022/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -332,7 +348,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
