@@ -33,4 +33,8 @@ class MDTCardPokemonImageView: UIImageView {
                                      widthAnchor.constraint(equalToConstant: 300)])
     }
     
+    func downloadImage(fromURL url: String) {
+        Task { image = await NetworkManager.shared.downloadImage(from: url) ?? placeholderImage }
+    }
+    
 }

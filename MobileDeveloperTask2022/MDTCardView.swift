@@ -34,28 +34,30 @@ class MDTCardView: UIView {
         addSubview(pokemonHPView)
         addSubview(pokemonAttackView)
         addSubview(pokemonDefenseView)
-        cardNameLabel.text = "Deneme"
+        
         pokemonHPView.set(pokemonStatsType: .hp, value: 50)
         pokemonAttackView.set(pokemonStatsType: .attack, value: 90)
         pokemonDefenseView.set(pokemonStatsType: .defense, value: 150)
-       
-        translatesAutoresizingMaskIntoConstraints = false
+        
+        
         backgroundColor = .white
         layer.cornerRadius = CGFloat(30)
         clipsToBounds = true
+        
         addToVerticalStackView()
         addToHorizontalStackView()
         addToMainVerticalStackView()
         
+        translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
-            cardNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
             mainVerticalStackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             mainVerticalStackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            mainVerticalStackView.topAnchor.constraint(equalTo: self.topAnchor),
+            mainVerticalStackView.topAnchor.constraint(equalTo: self.topAnchor,constant: 20),
             mainVerticalStackView.bottomAnchor.constraint(equalTo: self.bottomAnchor)])
     }
     
-    func addToVerticalStackView() {
+    private func addToVerticalStackView() {
         verticalStackView.axis  = NSLayoutConstraint.Axis.vertical
         verticalStackView.distribution  = UIStackView.Distribution.fill
         verticalStackView.alignment = UIStackView.Alignment.center
@@ -68,7 +70,7 @@ class MDTCardView: UIView {
         addSubview(verticalStackView)
     }
     
-    func addToHorizontalStackView() {
+    private func addToHorizontalStackView() {
         horizontalStackView.axis  = NSLayoutConstraint.Axis.horizontal
         horizontalStackView.distribution  = UIStackView.Distribution.fill
         horizontalStackView.alignment = UIStackView.Alignment.center
@@ -81,7 +83,7 @@ class MDTCardView: UIView {
         addSubview(horizontalStackView)
     }
     
-    func addToMainVerticalStackView() {
+    private func addToMainVerticalStackView() {
         mainVerticalStackView.axis  = NSLayoutConstraint.Axis.vertical
         mainVerticalStackView.distribution  = UIStackView.Distribution.fill
         mainVerticalStackView.alignment = UIStackView.Alignment.center
@@ -92,5 +94,15 @@ class MDTCardView: UIView {
         
         mainVerticalStackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(mainVerticalStackView)
+    }
+    
+    func updateCard(name:String,imageURL:String,hp:Int,attack:Int,defense:Int) {
+        DispatchQueue.main.async {
+            self.cardNameLabel.text = name
+            self.pokemonImage.downloadImage(fromURL: imageURL)
+            self.pokemonHPView.set(pokemonStatsType: .hp, value: hp)
+            self.pokemonAttackView.set(pokemonStatsType: .attack, value: attack)
+            self.pokemonDefenseView.set(pokemonStatsType: .defense, value: defense)
+        }
     }
 }
