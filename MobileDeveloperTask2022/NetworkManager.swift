@@ -12,6 +12,7 @@ class NetworkManager {
     private let baseURL = "https://pokeapi.co/api/v2/pokemon/"
     let cache           = NSCache<NSString, UIImage>()
     let decoder         = JSONDecoder()
+    var activeDownloads = 0
     
     private init() {
         decoder.keyDecodingStrategy  = .convertFromSnakeCase
@@ -19,8 +20,9 @@ class NetworkManager {
     }
     
     
-    func getGeneralPokemonData() async throws -> PokeNameURLModel {
-        let endpoint = baseURL
+    func getGeneralPokemonData(offset:Int,limit:Int) async throws -> PokeNameURLModel {
+       
+        let endpoint = baseURL + "?offset=\(offset)&limit=\(limit)"
         guard let url = URL(string: endpoint) else {
             throw MDTError.invalidURL
         }
@@ -101,13 +103,16 @@ class NetworkManager {
                     completed(.failure(.invalidData))
                 }
             }
-
+           
             task.resume()
         }
     
     func downloadImage(from urlString: String) async -> UIImage? {
         let cacheKey = NSString(string: urlString)
-        if let image = cache.object(forKey: cacheKey) { return image }
+        if let image = cache.object(forKey: cacheKey) {
+            print("Image taken from cache")
+            return image
+        }
         guard let url = URL(string: urlString) else { return nil }
         
         do {

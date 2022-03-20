@@ -12,3 +12,10 @@ enum Images {
     static let placeholder = UIImage(named: "placeholder")
     static let tempPokemon = UIImage(named: "132")
 }
+
+struct Settings {
+    static let shared = Settings()
+    var activeDownloads = 0
+
+    private init() { }
+}

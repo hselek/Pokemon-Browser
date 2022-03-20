@@ -35,11 +35,6 @@ class MDTCardView: UIView {
         addSubview(pokemonAttackView)
         addSubview(pokemonDefenseView)
         
-        pokemonHPView.set(pokemonStatsType: .hp, value: 50)
-        pokemonAttackView.set(pokemonStatsType: .attack, value: 90)
-        pokemonDefenseView.set(pokemonStatsType: .defense, value: 150)
-        
-        
         backgroundColor = .white
         layer.cornerRadius = CGFloat(30)
         clipsToBounds = true

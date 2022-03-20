@@ -26,7 +26,7 @@ class MDTCardPokemonImageView: UIImageView {
         contentMode = .scaleAspectFit
         tintColor = .label
         clipsToBounds = true
-        image = tempPokemonImage
+        image = nil
         translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([heightAnchor.constraint(equalToConstant: 300),

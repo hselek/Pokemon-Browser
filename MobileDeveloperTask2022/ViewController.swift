@@ -12,83 +12,135 @@ class ViewController: UIViewController {
     var cardView:UIView!
     var cardFront: MDTCardView!
     var cardBack: MDTCardView!
+    var loadingView:MDTLoadingView!
+    let restartButton = MDTRestartButton()
+    
     var pokemonData:PokeNameURLModel!
     var pokeDetails:PokeStatsModel!
     var pokeDetailsArray = [PokeStatsModel]()
-    var pokemonImage:UIImage!
     var pokemonCards = [PokemonCard]()
-    var nextID = 0
+    
+    var pokemonImage:UIImage!
+    var cardIndex = 0
+    var offset = 1
+    var limit = 10
+    var activeRequests = NetworkManager.shared.activeDownloads
     private var isFlipped: Bool = false
     
-    let restartButton = MDTRestartButton()
     
- 
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor (red: 168.0/255.0, green: 160.0/255.0, blue: 248/255.0, alpha: 1.0)
-        
+        pokemonCards.removeAll()
         cardFront = MDTCardView()
         cardBack = MDTCardView()
         configureRestartButton()
-        
-        
-        getGeneralPokemonData()
-        getPokeStatsData(id: 0, for: "https://pokeapi.co/api/v2/pokemon/1/")
-       
-        
-       
-      //  oldway()
-        
+        getGeneralPokemonData(offset: 0, limit: limit)
         configureCardView()
+        configureLoadingView()
+        showLoadingView()
+        addtapGestureRecognizer()
+        
     }
     
     
-    func getGeneralPokemonData() {
+    func configureLoadingView() {
+        loadingView = MDTLoadingView(frame: cardFront.frame)
+        view.addSubview(loadingView)
+        loadingView.isHidden = true
+        NSLayoutConstraint.activate([loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                                     loadingView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                                     loadingView.heightAnchor.constraint(equalTo: cardFront.heightAnchor),
+                                     loadingView.widthAnchor.constraint(equalTo: cardFront.widthAnchor)])
+    }
+    
+    func showLoadingView() {
+        cardFront.isHidden = true
+        loadingView?.isHidden = false
+        restartButton.isEnabled = false
+    }
+    
+    func hideLoadingView() {
+        if pokemonCards.count > 9 {
+            cardFront.isHidden = false
+        }
+        restartButton.isEnabled = true
+        loadingView?.isHidden = true
+    }
+    
+    func getGeneralPokemonData(offset:Int,limit:Int) {
+        activeRequests += 1
+        showLoadingView()
+        
+        print("Active Requests \(activeRequests)")
         Task {
             do {
-                let generalPokemonData = try await NetworkManager.shared.getGeneralPokemonData()
+                let generalPokemonData = try await NetworkManager.shared.getGeneralPokemonData(offset: offset, limit: limit)
                 updateUI(with: generalPokemonData)
-                
-                
-               // print(generalPokemonData.results.first?.name)
-              //  dismissLoadingView()
+                if activeRequests >= 1 {
+                    activeRequests -= 1
+                    print("Active Requests \(activeRequests)")
+                } else {
+                    hideLoadingView()
+                }
             } catch {
                 if let mdtError = error as? MDTError {
-                  //  presentGFAlert(title: "Bad Stuff Happend", message: gfError.rawValue, buttonTitle: "Ok")
+                    //  presentGFAlert(title: "Bad Stuff Happend", message: gfError.rawValue, buttonTitle: "Ok")
                 } else {
-                 //   presentDefaultError()
+                    //   presentDefaultError()
                 }
+                hideLoadingView()
             }
         }
+        print("Active Requests \(activeRequests)")
     }
     
     func getPokeStatsData(id:Int, for url:String) {
+        activeRequests += 1
+        if activeRequests > 0 {
+            showLoadingView()
+        }
+        
+        print("Active Requests \(activeRequests)")
         Task {
             do {
                 let pokeStatsData = try await NetworkManager.shared.getPokemonStats(for: url)
                 updateUIP(id: id, with: pokeStatsData)
-                
-               // print(generalPokemonData.results.first?.name)
-              //  dismissLoadingView()
+                if activeRequests >= 1 {
+                    activeRequests -= 1
+                    print("Active Requests \(activeRequests)")
+                }else {
+                    hideLoadingView()
+                }
             } catch {
                 if let mdtError = error as? MDTError {
                     print(error)
-                  //  presentGFAlert(title: "Bad Stuff Happend", message: gfError.rawValue, buttonTitle: "Ok")
+                    //  presentGFAlert(title: "Bad Stuff Happend", message: gfError.rawValue, buttonTitle: "Ok")
                 } else {
                     print(error)
-                 //   presentDefaultError()
+                    //   presentDefaultError()
                 }
+               hideLoadingView()
             }
+            
         }
     }
     
     func downloadImage(id:Int, url:String) {
+        activeRequests += 1
+        if activeRequests > 0 {
+            showLoadingView()
+        }
+        print("Active Image Download Requests \(activeRequests)")
         Task {
             pokemonImage = await NetworkManager.shared.downloadImage(from: url) ?? Images.placeholder!
             addImageToPokemonCards(id: id, image: pokemonImage)
         }
-    
+        
     }
     
     
@@ -105,96 +157,112 @@ class ViewController: UIViewController {
             pokemonCards[id].imageURL = imageURL
             downloadImage(id: id, url: imageURL)
         }
+        
         if pokemonCards.count-1 == id {
-            let card = pokemonCards[nextID]
-            guard let hp = card.hp else {return}
-            guard let attack = card.attack else {return}
-            guard let defense = card.defense else {return}
-            guard let imageURL = card.imageURL else {return}
-            cardFront.updateCard(name:card.name , imageURL: imageURL, hp: hp, attack: attack, defense: defense)
+            //print("Buldum")
+            updateCardUI()
         }
-            
+        
     }
     
     func addImageToPokemonCards(id:Int, image:UIImage) {
         if pokemonCards.count > 0 {
-        self.pokemonCards[id].image = image
+            self.pokemonCards[id].image = image
+            self.activeRequests -= 1
+            print("Active Image Download Requests \(activeRequests)")
+            if activeRequests == 0 {
+                hideLoadingView()
+            }
         }
-       /* for pokemonCard in pokemonCards {
-            print(pokemonCard)
-        }*/
     }
     
     
     func updateUI(with generalPokemonData: PokeNameURLModel) {
-       // if generalPokemonData.count < 100 { self.hasMoreFollowers = false }
-        self.pokemonData = generalPokemonData
-        for pokemon in generalPokemonData.results.enumerated() {
-            print(pokemon.offset)
-            print(pokemon.element.name)
-            print(pokemon.element.url)
+        if let previousData = generalPokemonData.previous {
+            var idToContinue = pokemonCards.last!.id + 1
+            self.pokemonData.results.append(contentsOf: generalPokemonData.results)
+           // print("New count " + "\(pokemonData.results.count)")
+           // print(previousData)
+            for pokemon in generalPokemonData.results {
+                makePokemonCard(id: idToContinue, name: pokemon.name, url: pokemon.url)
+                idToContinue += 1
+            }
+            for pokemonCard in pokemonCards {
+                getPokeStatsData(id: pokemonCard.id, for: pokemonCard.detailURL)
+            }
             
-           makePokemonCard(id: pokemon.offset, name: pokemon.element.name, url: pokemon.element.url)
+        }else {
+            //Means we do not have previous data therefore we will start from 0.
+            self.pokemonData = generalPokemonData
+            if pokemonCards.count == 0 {
+                for pokemon in generalPokemonData.results.enumerated() {
+                    makePokemonCard(id: pokemon.offset, name: pokemon.element.name, url: pokemon.element.url)
+                }
+                for pokemonCard in pokemonCards {
+                    getPokeStatsData(id: pokemonCard.id, for: pokemonCard.detailURL)
+                }
+            }
         }
-        for pokemonCard in pokemonCards {
-            getPokeStatsData(id: pokemonCard.id, for: pokemonCard.detailURL)
-        }
-   
-        
-
-    //   self.cardFront.updateCard(name: pokemonData.results.first!.name, image: Images.tempPokemon!, hp: 10, attack: 20, defense: 30)
-        
-       // cardBack.updateCard(name: "Deneme2", image: Images.placeholder!, hp: 150, attack: 200, defense: 250)
     }
     
     func updateUIP(id:Int, with stat: PokeStatsModel) {
-       // if generalPokemonData.count < 100 { self.hasMoreFollowers = false }
         self.pokeDetails = stat
-       // print("Stats \(stat)")
-       // print(pokeDetails)
+        
         let currentStat = stat.stats
         guard let imageURL = stat.sprites.frontDefault else {return}
-      //  print("Image url is:\(imageURL)")
         
         let hp = currentStat[0].baseStat
         let attack = currentStat[1].baseStat
         let defense = currentStat[2].baseStat
         
         addStatsToPokemonCard(id: id, hp: hp, attack: attack, defense: defense, imageURL: imageURL)
-        
-       // self.cardFront.updateCard(name: pokemonData.results[id].name, imageURL: imageURL, hp: hp, attack: attack, defense: defense)
-        
-        
-      //  cardBack.updateCard(name: "Deneme2", image: Images.placeholder!, hp: 150, attack: 200, defense: 250)
     }
     
     
     
+    func addtapGestureRecognizer() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        cardFront.addGestureRecognizer(tap)
+        cardFront.isUserInteractionEnabled = true
+    }
     
+    func updateCardUI() {
+        let card = pokemonCards[cardIndex]
+        guard let hp = card.hp else {return}
+        guard let attack = card.attack else {return}
+        guard let defense = card.defense else {return}
+        guard let imageURL = card.imageURL else {return}
+        DispatchQueue.main.async {
+            self.cardFront.updateCard(name: card.name, imageURL: imageURL, hp: hp, attack: attack, defense: defense)
+        }
+        
+    }
     
+    // - MARK: TAP
+    @objc func handleTap(_ sender: UITapGestureRecognizer) {
+        let totalPokemonCount = self.pokemonData.count
+        cardIndex += 1
+        offset += 1
+        if cardIndex < pokemonCards.count-1 {
+            self.updateCardUI()
+        }else {
+            if cardIndex == pokemonCards.count-1 {
+                getGeneralPokemonData(offset: offset, limit: limit)
+            }
+        }
+       // print(pokemonCards)
+        
+        //deneme()
+    }
     
     @objc func restartButtonPressed()  {
         print("Restart button pressed")
         isFlipped = !isFlipped
         let cardToFlip = isFlipped ? cardFront : cardBack
         let bottomCard = isFlipped ? cardBack : cardFront
-
+        cardIndex = 0
+        updateCardUI()
         
-      // deneme()
-        if nextID < pokemonCards.count-1 {
-        nextID += 1
-        }else {
-            nextID = 0
-        }
-        print(pokemonCards)
-         let card = pokemonCards[nextID]
-        guard let hp = card.hp else {return}
-        guard let attack = card.attack else {return}
-        guard let defense = card.defense else {return}
-        guard let imageURL = card.imageURL else {return}
-        
-        self.cardFront.updateCard(name: card.name, imageURL: imageURL, hp: hp, attack: attack, defense: defense)
-       
     }
     
     func deneme() {
@@ -211,8 +279,8 @@ class ViewController: UIViewController {
         
         let card1HorizontalD3 = CATransform3DRotate(rotationAndPerspectiveTransform, 13, 0, 99.8, -0.8)
         
-       // rotationAndPerspectiveTransform = card1HorizontalD0
-    
+        // rotationAndPerspectiveTransform = card1HorizontalD0
+        
         let card2HorizontalD0 = CATransform3DRotate(rotationAndPerspectiveTransform, 13, 0, 99.8, -0.8)
         
         let card2HorizontalD1 = CATransform3DRotate(rotationAndPerspectiveTransform, 19, 0, 180, 0)
@@ -223,16 +291,15 @@ class ViewController: UIViewController {
         self.cardFront.layer.isDoubleSided = false
         self.cardBack.layer.isDoubleSided = false
         
-       
-
-        UIView.animateKeyframes(withDuration: 5, delay: 0, options: .calculationModeCubic, animations: {
-           
+        
+        UIView.animateKeyframes(withDuration: 5, delay: 0, options: .calculationModeCubic) {
+            
             UIView.addKeyframe(withRelativeStartTime: 0.0, relativeDuration: 0.25) {
                 self.cardFront.layer.transform = card1HorizontalD0
                 self.cardBack.layer.transform = card2HorizontalD0
             }
-          
-        
+            
+            
             UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.25) {
                 self.cardFront.layer.transform = card1HorizontalD1
                 self.cardBack.layer.transform = card2HorizontalD1
@@ -256,17 +323,26 @@ class ViewController: UIViewController {
                 self.cardBack.layer.transform = card2HorizontalD0
                 
             }
+        } completion: { completed in
             
-        })
+        }
         
         
-       /* UIView.animate(withDuration: 1.0) {
-           // self.cardBack.layer.anchorPoint = CGPoint(x: 0.5, y: 0)
-            self.cardBack.layer.transform = rotationAndPerspectiveTransform
-        } completion: { finished in
-            print("Flip completed")
-        }*/
-
+        /*    UIView.animateKeyframes(withDuration: 5, delay: 0, options: .calculationModeCubic, animations: {
+         
+         
+         }
+         
+         )*/
+        
+        
+        /* UIView.animate(withDuration: 1.0) {
+         // self.cardBack.layer.anchorPoint = CGPoint(x: 0.5, y: 0)
+         self.cardBack.layer.transform = rotationAndPerspectiveTransform
+         } completion: { finished in
+         print("Flip completed")
+         }*/
+        
     }
     
     func configureCardView() {
@@ -274,7 +350,7 @@ class ViewController: UIViewController {
         view.addSubview(cardFront)
         view.addSubview(cardBack)
         
-       NSLayoutConstraint.activate([cardFront.widthAnchor.constraint(equalToConstant: 300),
+        NSLayoutConstraint.activate([cardFront.widthAnchor.constraint(equalToConstant: 300),
                                      cardFront.heightAnchor.constraint(equalToConstant: 500),
                                      cardFront.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                                      cardFront.centerYAnchor.constraint(equalTo: view.centerYAnchor)])

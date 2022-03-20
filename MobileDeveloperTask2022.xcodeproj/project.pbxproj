@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		113EC1E227E7BB9C0059FED1 /* MDTLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113EC1E127E7BB9C0059FED1 /* MDTLoadingView.swift */; };
+		113EC1E427E7BDA00059FED1 /* MDTLoadingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113EC1E327E7BDA00059FED1 /* MDTLoadingLabel.swift */; };
 		11BC042627E2216C00125D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC042527E2216C00125D3A /* AppDelegate.swift */; };
 		11BC042827E2216C00125D3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC042727E2216C00125D3A /* SceneDelegate.swift */; };
 		11BC042A27E2216C00125D3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC042927E2216C00125D3A /* ViewController.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		113EC1E127E7BB9C0059FED1 /* MDTLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTLoadingView.swift; sourceTree = "<group>"; };
+		113EC1E327E7BDA00059FED1 /* MDTLoadingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTLoadingLabel.swift; sourceTree = "<group>"; };
 		11BC042227E2216C00125D3A /* MobileDeveloperTask2022.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileDeveloperTask2022.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11BC042527E2216C00125D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11BC042727E2216C00125D3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +89,8 @@
 				11BC043B27E26A3E00125D3A /* MDTCardView.swift */,
 				11BC043D27E2713F00125D3A /* MDTCardNameLabel.swift */,
 				11BC043F27E2731800125D3A /* MDTCardPokemonImageView.swift */,
+				113EC1E127E7BB9C0059FED1 /* MDTLoadingView.swift */,
+				113EC1E327E7BDA00059FED1 /* MDTLoadingLabel.swift */,
 				11BC044327E282D700125D3A /* MDTCardPokemonStatsLabel.swift */,
 				11BC044527E2855100125D3A /* MDTCardPokemonStatsView.swift */,
 				11BC044127E274D600125D3A /* Constants.swift */,
@@ -183,8 +189,10 @@
 				11BC043E27E2714000125D3A /* MDTCardNameLabel.swift in Sources */,
 				11BC044227E274D600125D3A /* Constants.swift in Sources */,
 				11BC047227E4D1BB00125D3A /* PokeStatsModel.swift in Sources */,
+				113EC1E427E7BDA00059FED1 /* MDTLoadingLabel.swift in Sources */,
 				11BC044427E282D700125D3A /* MDTCardPokemonStatsLabel.swift in Sources */,
 				11BC046827E3542800125D3A /* PokeNameURLModel.swift in Sources */,
+				113EC1E227E7BB9C0059FED1 /* MDTLoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
