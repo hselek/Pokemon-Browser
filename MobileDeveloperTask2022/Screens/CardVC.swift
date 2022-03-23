@@ -28,7 +28,7 @@ class CardVC: UIViewController {
     var nextURL                 = String()
     var cardIndex               = 0
     var offset                  = 0
-    var limit                   = 10
+    var limit                   = 20
     var activeRequests          = 0 {
         didSet {
             if activeRequests > 0 || pokemonCards.count == 0 {
@@ -214,7 +214,7 @@ class CardVC: UIViewController {
         guard let defense  = card.defense else {return}
         guard let imageURL = card.imageURL else {return}
         
-        self.singleCard.updateCard(name: card.name, imageURL: imageURL, hp: hp, attack: attack, defense: defense)
+        self.singleCard.updateCard(name: card.name.firstUppercased, imageURL: imageURL, hp: hp, attack: attack, defense: defense)
     }
     
     
