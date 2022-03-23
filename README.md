@@ -14,7 +14,7 @@ Pokemon Browser is a simple Pokemon browser app which gets some basic informatio
 ## Technologies
     Swift
     UIKit
-    Async / Await (which was introduces in swift 5.5)
+    Async / Await (which was introduced in swift 5.5)
     XCode(13.3)
     
 ## Screenshots
