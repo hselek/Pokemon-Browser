@@ -18,7 +18,7 @@ Pokemon Browser is a simple Pokemon browser app which gets some basic informatio
     XCode(13.3)
     
 ## Screenshots
-<img src="https://user-images.githubusercontent.com/25989773/159705096-c21be196-b509-4d6e-ab7e-1ba8c366b123.png" width="200" />
+<img src="https://user-images.githubusercontent.com/25989773/159735679-5fe74969-b6a2-4fde-8683-eba2608c549e.png" width="300" />
 
 
 
