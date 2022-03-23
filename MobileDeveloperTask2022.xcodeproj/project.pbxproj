@@ -9,9 +9,15 @@
 /* Begin PBXBuildFile section */
 		113EC1E227E7BB9C0059FED1 /* MDTLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113EC1E127E7BB9C0059FED1 /* MDTLoadingView.swift */; };
 		113EC1E427E7BDA00059FED1 /* MDTLoadingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113EC1E327E7BDA00059FED1 /* MDTLoadingLabel.swift */; };
+		1192CFFF27E9AFFF00A61197 /* MDTAlertContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192CFFE27E9AFFF00A61197 /* MDTAlertContainerView.swift */; };
+		1192D00127E9B06300A61197 /* MDTAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192D00027E9B06300A61197 /* MDTAlertVC.swift */; };
+		1192D00327E9B0D300A61197 /* MDTAlertTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192D00227E9B0D300A61197 /* MDTAlertTitleLabel.swift */; };
+		1192D00527E9B19700A61197 /* MDTAlertBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192D00427E9B19700A61197 /* MDTAlertBodyLabel.swift */; };
+		1192D00727E9B22A00A61197 /* MDTAlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192D00627E9B22A00A61197 /* MDTAlertButton.swift */; };
+		1192D00927E9C0D800A61197 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192D00827E9C0D800A61197 /* UIViewController+Ext.swift */; };
 		11BC042627E2216C00125D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC042527E2216C00125D3A /* AppDelegate.swift */; };
 		11BC042827E2216C00125D3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC042727E2216C00125D3A /* SceneDelegate.swift */; };
-		11BC042A27E2216C00125D3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC042927E2216C00125D3A /* ViewController.swift */; };
+		11BC042A27E2216C00125D3A /* CardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC042927E2216C00125D3A /* CardVC.swift */; };
 		11BC042F27E2216D00125D3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11BC042E27E2216D00125D3A /* Assets.xcassets */; };
 		11BC043227E2216D00125D3A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11BC043027E2216D00125D3A /* LaunchScreen.storyboard */; };
 		11BC043A27E24F6900125D3A /* MDTRestartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC043927E24F6900125D3A /* MDTRestartButton.swift */; };
@@ -31,10 +37,17 @@
 /* Begin PBXFileReference section */
 		113EC1E127E7BB9C0059FED1 /* MDTLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTLoadingView.swift; sourceTree = "<group>"; };
 		113EC1E327E7BDA00059FED1 /* MDTLoadingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTLoadingLabel.swift; sourceTree = "<group>"; };
+		1192CFFE27E9AFFF00A61197 /* MDTAlertContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTAlertContainerView.swift; sourceTree = "<group>"; };
+		1192D00027E9B06300A61197 /* MDTAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTAlertVC.swift; sourceTree = "<group>"; };
+		1192D00227E9B0D300A61197 /* MDTAlertTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTAlertTitleLabel.swift; sourceTree = "<group>"; };
+		1192D00427E9B19700A61197 /* MDTAlertBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTAlertBodyLabel.swift; sourceTree = "<group>"; };
+		1192D00627E9B22A00A61197 /* MDTAlertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDTAlertButton.swift; sourceTree = "<group>"; };
+		1192D00827E9C0D800A61197 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		1192D03827EB45F900A61197 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		11BC042227E2216C00125D3A /* MobileDeveloperTask2022.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileDeveloperTask2022.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11BC042527E2216C00125D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11BC042727E2216C00125D3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		11BC042927E2216C00125D3A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		11BC042927E2216C00125D3A /* CardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardVC.swift; sourceTree = "<group>"; };
 		11BC042E27E2216D00125D3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11BC043127E2216D00125D3A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11BC043327E2216D00125D3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -63,9 +76,124 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1192D00A27E9E66600A61197 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				11BC046B27E3938B00125D3A /* PokemonCard.swift */,
+				11BC046727E3542800125D3A /* PokeNameURLModel.swift */,
+				11BC047127E4D1BB00125D3A /* PokeStatsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1192D00B27E9E6B100A61197 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				11BC043D27E2713F00125D3A /* MDTCardNameLabel.swift */,
+				113EC1E327E7BDA00059FED1 /* MDTLoadingLabel.swift */,
+				1192D00427E9B19700A61197 /* MDTAlertBodyLabel.swift */,
+				1192D00227E9B0D300A61197 /* MDTAlertTitleLabel.swift */,
+				11BC044327E282D700125D3A /* MDTCardPokemonStatsLabel.swift */,
+			);
+			path = Labels;
+			sourceTree = "<group>";
+		};
+		1192D00C27E9E6CE00A61197 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				11BC043927E24F6900125D3A /* MDTRestartButton.swift */,
+				1192D00627E9B22A00A61197 /* MDTAlertButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		1192D00D27E9E6E600A61197 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				11BC043B27E26A3E00125D3A /* MDTCardView.swift */,
+				113EC1E127E7BB9C0059FED1 /* MDTLoadingView.swift */,
+				11BC044527E2855100125D3A /* MDTCardPokemonStatsView.swift */,
+				1192CFFE27E9AFFF00A61197 /* MDTAlertContainerView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1192D00E27E9E71600A61197 /* ImageViews */ = {
+			isa = PBXGroup;
+			children = (
+				11BC043F27E2731800125D3A /* MDTCardPokemonImageView.swift */,
+			);
+			path = ImageViews;
+			sourceTree = "<group>";
+		};
+		1192D00F27E9E72900A61197 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				11BC046D27E4B44400125D3A /* NetworkManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		1192D01027E9E75900A61197 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				11BC044127E274D600125D3A /* Constants.swift */,
+				11BC046F27E4B66500125D3A /* MDTError.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		1192D01127E9E7C900A61197 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				11BC042927E2216C00125D3A /* CardVC.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		1192D01227E9E7F500A61197 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1192D00027E9B06300A61197 /* MDTAlertVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		1192D01327E9E89D00A61197 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1192D00827E9C0D800A61197 /* UIViewController+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1192D01427E9E8D000A61197 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				1192D00B27E9E6B100A61197 /* Labels */,
+				1192D01227E9E7F500A61197 /* ViewControllers */,
+				1192D00E27E9E71600A61197 /* ImageViews */,
+				1192D00C27E9E6CE00A61197 /* Buttons */,
+				1192D00D27E9E6E600A61197 /* Views */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		1192D01527E9E90800A61197 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				11BC042527E2216C00125D3A /* AppDelegate.swift */,
+				11BC042727E2216C00125D3A /* SceneDelegate.swift */,
+				11BC042E27E2216D00125D3A /* Assets.xcassets */,
+				11BC043027E2216D00125D3A /* LaunchScreen.storyboard */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		11BC041927E2216C00125D3A = {
 			isa = PBXGroup;
 			children = (
+				1192D03827EB45F900A61197 /* README.md */,
 				11BC042427E2216C00125D3A /* MobileDeveloperTask2022 */,
 				11BC042327E2216C00125D3A /* Products */,
 			);
@@ -82,25 +210,13 @@
 		11BC042427E2216C00125D3A /* MobileDeveloperTask2022 */ = {
 			isa = PBXGroup;
 			children = (
-				11BC042527E2216C00125D3A /* AppDelegate.swift */,
-				11BC042727E2216C00125D3A /* SceneDelegate.swift */,
-				11BC042927E2216C00125D3A /* ViewController.swift */,
-				11BC043927E24F6900125D3A /* MDTRestartButton.swift */,
-				11BC043B27E26A3E00125D3A /* MDTCardView.swift */,
-				11BC043D27E2713F00125D3A /* MDTCardNameLabel.swift */,
-				11BC043F27E2731800125D3A /* MDTCardPokemonImageView.swift */,
-				113EC1E127E7BB9C0059FED1 /* MDTLoadingView.swift */,
-				113EC1E327E7BDA00059FED1 /* MDTLoadingLabel.swift */,
-				11BC044327E282D700125D3A /* MDTCardPokemonStatsLabel.swift */,
-				11BC044527E2855100125D3A /* MDTCardPokemonStatsView.swift */,
-				11BC044127E274D600125D3A /* Constants.swift */,
-				11BC046727E3542800125D3A /* PokeNameURLModel.swift */,
-				11BC047127E4D1BB00125D3A /* PokeStatsModel.swift */,
-				11BC046B27E3938B00125D3A /* PokemonCard.swift */,
-				11BC046D27E4B44400125D3A /* NetworkManager.swift */,
-				11BC046F27E4B66500125D3A /* MDTError.swift */,
-				11BC042E27E2216D00125D3A /* Assets.xcassets */,
-				11BC043027E2216D00125D3A /* LaunchScreen.storyboard */,
+				1192D01027E9E75900A61197 /* Utilities */,
+				1192D00F27E9E72900A61197 /* Managers */,
+				1192D00A27E9E66600A61197 /* Model */,
+				1192D01327E9E89D00A61197 /* Extensions */,
+				1192D01427E9E8D000A61197 /* Custom Views */,
+				1192D01127E9E7C900A61197 /* Screens */,
+				1192D01527E9E90800A61197 /* Support */,
 				11BC043327E2216D00125D3A /* Info.plist */,
 			);
 			path = MobileDeveloperTask2022;
@@ -176,23 +292,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11BC042A27E2216C00125D3A /* ViewController.swift in Sources */,
+				11BC042A27E2216C00125D3A /* CardVC.swift in Sources */,
+				1192D00127E9B06300A61197 /* MDTAlertVC.swift in Sources */,
 				11BC042627E2216C00125D3A /* AppDelegate.swift in Sources */,
 				11BC047027E4B66500125D3A /* MDTError.swift in Sources */,
 				11BC043C27E26A3E00125D3A /* MDTCardView.swift in Sources */,
+				1192D00927E9C0D800A61197 /* UIViewController+Ext.swift in Sources */,
 				11BC046E27E4B44400125D3A /* NetworkManager.swift in Sources */,
 				11BC042827E2216C00125D3A /* SceneDelegate.swift in Sources */,
 				11BC043A27E24F6900125D3A /* MDTRestartButton.swift in Sources */,
 				11BC044027E2731800125D3A /* MDTCardPokemonImageView.swift in Sources */,
 				11BC044627E2855100125D3A /* MDTCardPokemonStatsView.swift in Sources */,
+				1192D00327E9B0D300A61197 /* MDTAlertTitleLabel.swift in Sources */,
 				11BC046C27E3938B00125D3A /* PokemonCard.swift in Sources */,
 				11BC043E27E2714000125D3A /* MDTCardNameLabel.swift in Sources */,
+				1192D00527E9B19700A61197 /* MDTAlertBodyLabel.swift in Sources */,
 				11BC044227E274D600125D3A /* Constants.swift in Sources */,
 				11BC047227E4D1BB00125D3A /* PokeStatsModel.swift in Sources */,
 				113EC1E427E7BDA00059FED1 /* MDTLoadingLabel.swift in Sources */,
 				11BC044427E282D700125D3A /* MDTCardPokemonStatsLabel.swift in Sources */,
 				11BC046827E3542800125D3A /* PokeNameURLModel.swift in Sources */,
 				113EC1E227E7BB9C0059FED1 /* MDTLoadingView.swift in Sources */,
+				1192D00727E9B22A00A61197 /* MDTAlertButton.swift in Sources */,
+				1192CFFF27E9AFFF00A61197 /* MDTAlertContainerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,11 +451,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3BHVHY3L3R;
+				DEVELOPMENT_TEAM = YZFK9TGNLQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MobileDeveloperTask2022/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Pokemon Browser";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -344,11 +468,12 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.phtechnologysolutions.MobileDeveloperTask2022;
+				PRODUCT_BUNDLE_IDENTIFIER = com.phtechnologysolutions.MobileDeveloperTask2022Otsimo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -359,9 +484,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3BHVHY3L3R;
+				DEVELOPMENT_TEAM = YZFK9TGNLQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MobileDeveloperTask2022/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Pokemon Browser";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -372,11 +498,11 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.phtechnologysolutions.MobileDeveloperTask2022;
+				PRODUCT_BUNDLE_IDENTIFIER = com.phtechnologysolutions.MobileDeveloperTask2022Otsimo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
