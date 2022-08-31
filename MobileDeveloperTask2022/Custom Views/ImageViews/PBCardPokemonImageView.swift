@@ -1,13 +1,9 @@
-//
-//  MDTCardPokemonImageView.swift
-//  MobileDeveloperTask2022
-//
 //  Created by Eyup Selek on 16.03.2022.
 //
 
 import UIKit
 
-class MDTCardPokemonImageView: UIImageView {
+class PBCardPokemonImageView: UIImageView {
     
     let placeholderImage = Images.placeholder
     
@@ -44,7 +40,7 @@ class MDTCardPokemonImageView: UIImageView {
                 image = try await NetworkManager.shared.downloadImage(from: url) ?? placeholderImage
             } catch {
                 print(error)
-                throw MDTError.errorDownloadingImage
+                throw PBError.errorDownloadingImage
             }
         }
     }

@@ -1,7 +1,3 @@
-//
-//  PokemonCard.swift
-//  MobileDeveloperTask2022
-//
 //  Created by Eyup Selek on 17.03.2022.
 //
 

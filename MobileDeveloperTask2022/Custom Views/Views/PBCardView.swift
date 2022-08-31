@@ -1,18 +1,14 @@
-//
-//  MDTCardView.swift
-//  MobileDeveloperTask2022
-//
 //  Created by Eyup Selek on 16.03.2022.
 //
 
 import UIKit
 
-class MDTCardView: UIView {
-    let cardNameLabel      = MDTCardNameLabel(textAlignment: .center, fontSize: 22)
-    let pokemonImage       = MDTCardPokemonImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
-    let pokemonHPView      = MDTCardPokemonStatsView(frame: CGRect(x: 0, y: 0, width: 100, height: 300))
-    let pokemonAttackView  = MDTCardPokemonStatsView(frame: CGRect(x: 0, y: 0, width: 100, height: 300))
-    let pokemonDefenseView = MDTCardPokemonStatsView(frame: CGRect(x: 0, y: 0, width: 100, height: 300))
+class PBCardView: UIView {
+    let cardNameLabel      = PBCardNameLabel(textAlignment: .center, fontSize: 22)
+    let pokemonImage       = PBCardPokemonImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+    let pokemonHPView      = PBCardPokemonStatsView(frame: CGRect(x: 0, y: 0, width: 100, height: 300))
+    let pokemonAttackView  = PBCardPokemonStatsView(frame: CGRect(x: 0, y: 0, width: 100, height: 300))
+    let pokemonDefenseView = PBCardPokemonStatsView(frame: CGRect(x: 0, y: 0, width: 100, height: 300))
     
     let verticalStackView = UIStackView()
     let horizontalStackView = UIStackView()

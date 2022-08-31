@@ -1,18 +1,14 @@
-//
-//  MDTAlertVC.swift
-//  MobileDeveloperTask2022
-//
 //  Created by Eyup Selek on 22.03.2022.
 //
 
 import UIKit
 
-class MDTAlertVC: UIViewController {
+class PBAlertVC: UIViewController {
     
-    let containerView   = MDTAlertContainerView()
-    let titleLabel      = MDTAlertTitleLabel(textAlignment: .center, fontSize: 20)
-    let messageLabel    = MDTAlertBodyLabel(textAlignment: .center)
-    let actionButton    = MDTAlertButton(color: .systemPink, title: "Ok", systemImageName: "checkmark.circle")
+    let containerView   = PBAlertContainerView()
+    let titleLabel      = PBAlertTitleLabel(textAlignment: .center, fontSize: 20)
+    let messageLabel    = PBAlertBodyLabel(textAlignment: .center)
+    let actionButton    = PBAlertButton(color: .systemPink, title: "Ok", systemImageName: "checkmark.circle")
     
     var alertTitle: String?
     var message:    String?

@@ -1,7 +1,3 @@
-//
-//  NetworkManager.swift
-//  MobileDeveloperTask2022
-//
 //  Created by Eyup Selek on 18.03.2022.
 //
 
@@ -34,19 +30,19 @@ class NetworkManager {
         }
         
         guard let url = URL(string: endpoint) else {
-            throw MDTError.invalidURL
+            throw PBError.invalidURL
         }
         
         let (data, response) = try await URLSession.shared.data(from: url)
         guard let response   = response as? HTTPURLResponse, response.statusCode == 200 else {
-            throw MDTError.invalidResponse
+            throw PBError.invalidResponse
         }
         
         do {
             let decodedData = try decoder.decode(PokeNameURLModel.self, from: data)
             return decodedData
         } catch {
-            throw MDTError.invalidData
+            throw PBError.invalidData
         }
     }
     
@@ -55,19 +51,19 @@ class NetworkManager {
         let endpoint = url
         
         guard let url = URL(string: endpoint) else {
-            throw MDTError.invalidURL
+            throw PBError.invalidURL
         }
         
         let (data, response) = try await URLSession.shared.data(from: url)
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-            throw MDTError.invalidResponse
+            throw PBError.invalidResponse
         }
         
         do {
             let decodedData = try decoder.decode(PokeStatsModel.self, from: data)
             return decodedData
         } catch {
-            throw MDTError.invalidData
+            throw PBError.invalidData
         }
     }
     
@@ -75,12 +71,12 @@ class NetworkManager {
         let endpoint = baseURL + name
         
         guard let url = URL(string: endpoint) else {
-            throw MDTError.invalidURL
+            throw PBError.invalidURL
         }
         
         let (data, response) = try await URLSession.shared.data(from: url)
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-            throw MDTError.invalidResponse
+            throw PBError.invalidResponse
         }
         
         do {
@@ -88,7 +84,7 @@ class NetworkManager {
             return decodedData
         } catch {
             print("Error, Invalid data")
-            throw MDTError.invalidData
+            throw PBError.invalidData
         }
     }
     
@@ -107,7 +103,7 @@ class NetworkManager {
             return image
         } catch {
             print(error)
-            throw MDTError.errorDownloadingImage
+            throw PBError.errorDownloadingImage
         }
     }
     

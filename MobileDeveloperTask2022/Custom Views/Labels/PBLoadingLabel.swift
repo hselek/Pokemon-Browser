@@ -1,14 +1,9 @@
-//
-//  MDTCardNameLabel.swift
-//  MobileDeveloperTask2022
-//
-//  Created by Eyup Selek on 16.03.2022.
+//  Created by Eyup Selek on 20.03.2022.
 //
 
 import UIKit
 
-class MDTCardNameLabel: UILabel {
-
+class PBLoadingLabel:UILabel {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -21,7 +16,7 @@ class MDTCardNameLabel: UILabel {
     convenience init(textAlignment:NSTextAlignment,fontSize:CGFloat) {
         self.init(frame: .zero)
         self.textAlignment = textAlignment
-        self.font          = UIFont.systemFont(ofSize: fontSize,weight: .regular)
+        self.font = UIFont.systemFont(ofSize: fontSize,weight: .regular)
     }
     
     private func configure() {
@@ -31,5 +26,4 @@ class MDTCardNameLabel: UILabel {
         lineBreakMode             = .byTruncatingTail
         translatesAutoresizingMaskIntoConstraints = false
     }
-
 }

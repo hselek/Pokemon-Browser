@@ -1,20 +1,16 @@
-//
-//  MDTCardPokemonStatsView.swift
-//  MobileDeveloperTask2022
-//
 //  Created by Eyup Selek on 16.03.2022.
 //
 
 import UIKit
 
-class MDTCardPokemonStatsView: UIView {
+class PBCardPokemonStatsView: UIView {
     
     enum PokemonStatsType {
         case hp,attack,defense
     }
     
-    let statNameLabel  = MDTCardPokemonStatsLabel(textAlignment: .center, fontSize: 24, fontWeight: .regular)
-    let statValueLabel = MDTCardPokemonStatsLabel(textAlignment: .center, fontSize: 33, fontWeight: .bold)
+    let statNameLabel  = PBCardPokemonStatsLabel(textAlignment: .center, fontSize: 24, fontWeight: .regular)
+    let statValueLabel = PBCardPokemonStatsLabel(textAlignment: .center, fontSize: 33, fontWeight: .bold)
     
     
     let verticalStackView   = UIStackView()

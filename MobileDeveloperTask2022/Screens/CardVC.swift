@@ -1,22 +1,16 @@
-//
-//  ViewController.swift
-//  MobileDeveloperTask2022
-//
 //  Created by Eyup Selek on 16.03.2022.
 //
-
-// Sorry, no animation for now. I'll look into keyframe animations.
 
 import UIKit
 
 class CardVC: UIViewController {
     
-    var restartButton: MDTRestartButton!
+    var restartButton: PBRestartButton!
     var cardContainerView: UIView!
-    var cardFront:MDTCardView!
-    var cardBack: MDTCardView!
-    var singleCard:MDTCardView!
-    var loadingView:MDTLoadingView!
+    var cardFront:PBCardView!
+    var cardBack: PBCardView!
+    var singleCard:PBCardView!
+    var loadingView:PBLoadingView!
     var isAnimationEnabled = false
     var isFlipped = false
     var pokemonData:PokeNameURLModel!
@@ -47,10 +41,10 @@ class CardVC: UIViewController {
         view.backgroundColor         = Colors.customBackgroundColor
         
         pokemonCards.removeAll()
-        cardFront      = MDTCardView()
-        cardBack       = MDTCardView()
-        singleCard     = MDTCardView()
-        restartButton  = MDTRestartButton()
+        cardFront      = PBCardView()
+        cardBack       = PBCardView()
+        singleCard     = PBCardView()
+        restartButton  = PBRestartButton()
         configureRestartButton()
         getGeneralPokemonData(offset: offset, limit: limit, url: nil)
         configureCardContainerView()
@@ -84,7 +78,7 @@ class CardVC: UIViewController {
                 updateUI(with: generalPokemonData)
                 checkActiveRequestsAndDecrement()
             } catch {
-                if let mdtError = error as? MDTError {
+                if let mdtError = error as? PBError {
                     presentMDTAlert(title: "Something Went Wrong", message: mdtError.rawValue, buttonTitle: "OK")
                 } else {
                     presentDefaultError()
@@ -103,7 +97,7 @@ class CardVC: UIViewController {
                 updatePokemonStatsWith(data:pokemonStatsData)
                 checkActiveRequestsAndDecrement()
             } catch {
-                if let mdtError = error as? MDTError {
+                if let mdtError = error as? PBError {
                     presentMDTAlert(title: "Something Went Wrong", message: mdtError.rawValue, buttonTitle: "OK")
                 } else {
                     presentDefaultError()
@@ -121,7 +115,7 @@ class CardVC: UIViewController {
                 _ = try await NetworkManager.shared.downloadImage(from: url)
                 checkActiveRequestsAndDecrement()
             } catch {
-                if let mdtError = error as? MDTError {
+                if let mdtError = error as? PBError {
                     presentMDTAlert(title: "Something Went Wrong", message: mdtError.rawValue, buttonTitle: "OK")
                 } else {
                     presentDefaultError()
@@ -297,7 +291,7 @@ class CardVC: UIViewController {
     
     
     func configureLoadingView() {
-        loadingView = MDTLoadingView(frame: cardContainerView.frame)
+        loadingView = PBLoadingView(frame: cardContainerView.frame)
         view.addSubview(loadingView)
         loadingView.isHidden = true
         NSLayoutConstraint.activate([loadingView.centerXAnchor.constraint(equalTo: view.centerXAnchor),

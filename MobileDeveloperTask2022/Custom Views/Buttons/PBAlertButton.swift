@@ -1,13 +1,9 @@
-//
-//  MDTAlertButton.swift
-//  MobileDeveloperTask2022
-//
 //  Created by Eyup Selek on 22.03.2022.
 //
 
 import UIKit
 
-class MDTAlertButton: UIButton {
+class PBAlertButton: UIButton {
 
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -1,14 +1,10 @@
-//
-//  MDTLoadingView.swift
-//  MobileDeveloperTask2022
-//
 //  Created by Eyup Selek on 20.03.2022.
 //
 
 import UIKit
 
-class MDTLoadingView: UIView {
-    let loadingLabel = MDTLoadingLabel(textAlignment: .center, fontSize: 24)
+class PBLoadingView: UIView {
+    let loadingLabel = PBLoadingLabel(textAlignment: .center, fontSize: 24)
     
     override init(frame: CGRect) {
         super.init(frame: frame)

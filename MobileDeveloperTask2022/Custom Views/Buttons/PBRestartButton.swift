@@ -1,13 +1,9 @@
-//
-//  MDTButton.swift
-//  MobileDeveloperTask2022
-//
 //  Created by Eyup Selek on 16.03.2022.
 //
 
 import UIKit
 
-class MDTRestartButton: UIButton {
+class PBRestartButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
