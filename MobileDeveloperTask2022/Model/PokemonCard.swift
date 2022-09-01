@@ -28,4 +28,3 @@ struct PokemonCard:Identifiable {
         self.defense = defense
     }
 }
-

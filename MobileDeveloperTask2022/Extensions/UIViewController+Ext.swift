@@ -5,7 +5,7 @@ import UIKit
 
 extension UIViewController {
     
-    func presentMDTAlert(title: String, message: String, buttonTitle: String) {
+    func presentPBAlert(title: String, message: String, buttonTitle: String) {
         let alertVC = PBAlertVC(title: title, message: message, buttonTitle: buttonTitle)
         alertVC.modalPresentationStyle  = .overFullScreen
         alertVC.modalTransitionStyle    = .crossDissolve
@@ -20,7 +20,4 @@ extension UIViewController {
         alertVC.modalTransitionStyle    = .crossDissolve
         present(alertVC, animated: true)
     }
-    
 }
-
-

@@ -9,7 +9,7 @@
 * [Contact](#contact)
   
 ## General Information
-Pokemon Browser is a simple Pokemon browser app which gets some basic information about the Pokemons from the pokeapi. The information retrieved and shown by the App include the names, images and some important stats like hp, attack and defense values of Pokemons. This project was done as a challenge.
+Pokemon Browser is a simple Pokemon browser app which gets some basic information about the Pokemons from the pokeapi. The information retrieved and shown by the App include the names, images and some important stats like hp, attack and defense values of Pokemons.
 
 ## Technologies
     Swift

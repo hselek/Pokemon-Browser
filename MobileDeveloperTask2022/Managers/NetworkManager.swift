@@ -8,7 +8,7 @@ class NetworkManager {
     private let baseURL = "https://pokeapi.co/api/v2/pokemon/"
     let cache           = NSCache<NSString, UIImage>()
     let decoder         = JSONDecoder()
-    var activeDownloads = 0
+    
     private init() {
         cache.countLimit = 100
         decoder.keyDecodingStrategy  = .convertFromSnakeCase
@@ -106,6 +106,4 @@ class NetworkManager {
             throw PBError.errorDownloadingImage
         }
     }
-    
-    
 }

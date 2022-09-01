@@ -8,11 +8,8 @@ class CardVC: UIViewController {
     var restartButton: PBRestartButton!
     var cardContainerView: UIView!
     var cardFront:PBCardView!
-    var cardBack: PBCardView!
     var singleCard:PBCardView!
     var loadingView:PBLoadingView!
-    var isAnimationEnabled = false
-    var isFlipped = false
     var pokemonData:PokeNameURLModel!
     var pokeDetails:PokeStatsModel!
     var pokeDetailsArray        = [PokeStatsModel]()
@@ -29,7 +26,7 @@ class CardVC: UIViewController {
                 showLoadingView()
             }else {
                 hideLoadingView()
-                self.isAnimationEnabled ? updateCardUI() : updateCardUIWithoutAnimation()
+                updateCardUI()
             }
         }
     }
@@ -42,7 +39,6 @@ class CardVC: UIViewController {
         
         pokemonCards.removeAll()
         cardFront      = PBCardView()
-        cardBack       = PBCardView()
         singleCard     = PBCardView()
         restartButton  = PBRestartButton()
         configureRestartButton()
@@ -78,8 +74,8 @@ class CardVC: UIViewController {
                 updateUI(with: generalPokemonData)
                 checkActiveRequestsAndDecrement()
             } catch {
-                if let mdtError = error as? PBError {
-                    presentMDTAlert(title: "Something Went Wrong", message: mdtError.rawValue, buttonTitle: "OK")
+                if let pbError = error as? PBError {
+                    presentPBAlert(title: "Something Went Wrong", message: pbError.rawValue, buttonTitle: "OK")
                 } else {
                     presentDefaultError()
                 }
@@ -97,8 +93,8 @@ class CardVC: UIViewController {
                 updatePokemonStatsWith(data:pokemonStatsData)
                 checkActiveRequestsAndDecrement()
             } catch {
-                if let mdtError = error as? PBError {
-                    presentMDTAlert(title: "Something Went Wrong", message: mdtError.rawValue, buttonTitle: "OK")
+                if let pbError = error as? PBError {
+                    presentPBAlert(title: "Something Went Wrong", message: pbError.rawValue, buttonTitle: "OK")
                 } else {
                     presentDefaultError()
                 }
@@ -115,8 +111,8 @@ class CardVC: UIViewController {
                 _ = try await NetworkManager.shared.downloadImage(from: url)
                 checkActiveRequestsAndDecrement()
             } catch {
-                if let mdtError = error as? PBError {
-                    presentMDTAlert(title: "Something Went Wrong", message: mdtError.rawValue, buttonTitle: "OK")
+                if let pbError = error as? PBError {
+                    presentPBAlert(title: "Something Went Wrong", message: pbError.rawValue, buttonTitle: "OK")
                 } else {
                     presentDefaultError()
                 }
@@ -134,7 +130,8 @@ class CardVC: UIViewController {
         }
     }
     
-    
+    //@MainActor is a singleton actor whose executor is equivalent to the main dispatch queue so DispatchQueue.main.async is not needed
+    @MainActor
     func updateUI(with generalPokemonData: PokeNameURLModel) {
         self.apiReportedPokemonCount = generalPokemonData.count
         if let nextURL   = generalPokemonData.next {
@@ -163,45 +160,14 @@ class CardVC: UIViewController {
     
     func addTapGestureRecognizer() {
         tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
-        if isAnimationEnabled {
-        cardContainerView.addGestureRecognizer(tapGestureRecognizer)
-        cardContainerView.isUserInteractionEnabled = true
-        } else {
-            singleCard.addGestureRecognizer(tapGestureRecognizer)
-            singleCard.isUserInteractionEnabled = true
-        }
+        
+        singleCard.addGestureRecognizer(tapGestureRecognizer)
+        singleCard.isUserInteractionEnabled = true
     }
     
     
     // - MARK: UpdateCardUI
     func updateCardUI() {
-        let frontSideOfCard = pokemonCards[cardIndex]
-        var backSideOfCard:PokemonCard?
-        
-        if  cardIndex+1 < pokemonCards.count-1 {
-            backSideOfCard = pokemonCards[frontSideOfCard.id]
-        }
-        
-        guard let hp       = frontSideOfCard.hp else {return}
-        guard let attack   = frontSideOfCard.attack else {return}
-        guard let defense  = frontSideOfCard.defense else {return}
-        guard let imageURL = frontSideOfCard.imageURL else {return}
-        
-        guard let backSideOfCard   = backSideOfCard else {return}
-        guard let backSideHp       = backSideOfCard.hp else {return}
-        guard let backSideAttack   = backSideOfCard.attack else {return}
-        guard let backSideDefense  = backSideOfCard.defense else {return}
-        guard let backSideImageURL = backSideOfCard.imageURL else {return}
-    
-        self.cardFront.updateCard(name: frontSideOfCard.name.firstUppercased, imageURL: imageURL, hp: hp, attack: attack, defense: defense)
-        
-        self.cardBack.updateCard(name: backSideOfCard.name, imageURL: backSideImageURL, hp: backSideHp, attack: backSideAttack, defense: backSideDefense)
-        
-        cardIndex = backSideOfCard.id
-    }
-    
-    
-    func updateCardUIWithoutAnimation() {
         let card           = pokemonCards[cardIndex]
         guard let hp       = card.hp else {return}
         guard let attack   = card.attack else {return}
@@ -215,19 +181,19 @@ class CardVC: UIViewController {
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
         if cardIndex + 2 >= self.pokemonCards.count-1 {
             getGeneralPokemonData(offset: nil, limit: limit, url: nextURL)
-        
-            self.isAnimationEnabled ? updateCardUI() : updateCardUIWithoutAnimation()
+            
+            updateCardUI()
         }
         if cardIndex < self.apiReportedPokemonCount-1 && cardIndex < self.pokemonCards.count-1 {
             cardIndex += 1
-            self.isAnimationEnabled ? updateCardUI() : updateCardUIWithoutAnimation()
+            updateCardUI()
         }
     }
     
     
     @objc func restartButtonPressed()  {
         cardIndex = 0
-        self.isAnimationEnabled ? updateCardUI() : updateCardUIWithoutAnimation()
+        updateCardUI()
     }
     
     
@@ -238,7 +204,7 @@ class CardVC: UIViewController {
         view.addSubview(cardContainerView)
         cardContainerView.translatesAutoresizingMaskIntoConstraints = false
         self.cardFront.layer.isDoubleSided = false
-        self.cardBack.layer.isDoubleSided = false
+       
         
         NSLayoutConstraint.activate([cardContainerView.widthAnchor.constraint(equalToConstant: widthAnchorConstant),
                                      cardContainerView.heightAnchor.constraint(equalToConstant: heightAnchorConstant),
@@ -251,26 +217,11 @@ class CardVC: UIViewController {
         let widthAnchorConstant:  CGFloat = DeviceTypes.isiPad ? 570 : 300
         let heightAnchorConstant: CGFloat = DeviceTypes.isiPad ? 475 : 500
         
-        if isAnimationEnabled {
-        cardContainerView.addSubview(cardFront)
-        cardContainerView.addSubview(cardBack)
-    
-        NSLayoutConstraint.activate([cardFront.widthAnchor.constraint(equalToConstant: widthAnchorConstant),
-                                     cardFront.heightAnchor.constraint(equalToConstant: heightAnchorConstant),
-                                     cardFront.centerXAnchor.constraint(equalTo: cardContainerView.centerXAnchor),
-                                     cardFront.centerYAnchor.constraint(equalTo: cardContainerView.centerYAnchor)])
-        
-        NSLayoutConstraint.activate([cardBack.widthAnchor.constraint(equalToConstant: widthAnchorConstant),
-                                     cardBack.heightAnchor.constraint(equalToConstant: heightAnchorConstant),
-                                     cardBack.centerXAnchor.constraint(equalTo: cardContainerView.centerXAnchor),
-                                     cardBack.centerYAnchor.constraint(equalTo: cardContainerView.centerYAnchor)])
-        } else {
-            self.view.addSubview(singleCard)
-            NSLayoutConstraint.activate([singleCard.widthAnchor.constraint(equalToConstant: widthAnchorConstant),
-                                         singleCard.heightAnchor.constraint(equalToConstant: heightAnchorConstant),
-                                         singleCard.centerXAnchor.constraint(equalTo: cardContainerView.centerXAnchor),
-                                         singleCard.centerYAnchor.constraint(equalTo: cardContainerView.centerYAnchor)])
-        }
+        self.view.addSubview(singleCard)
+        NSLayoutConstraint.activate([singleCard.widthAnchor.constraint(equalToConstant: widthAnchorConstant),
+                                     singleCard.heightAnchor.constraint(equalToConstant: heightAnchorConstant),
+                                     singleCard.centerXAnchor.constraint(equalTo: cardContainerView.centerXAnchor),
+                                     singleCard.centerYAnchor.constraint(equalTo: cardContainerView.centerYAnchor)])
     }
     
     func configureRestartButton() {
@@ -316,10 +267,4 @@ class CardVC: UIViewController {
         restartButton.isEnabled        = true
     }
     
-}
-
-
-extension StringProtocol {
-    var firstUppercased: String { prefix(1).uppercased() + dropFirst() }
-    var firstCapitalized: String { prefix(1).capitalized + dropFirst() }
 }
